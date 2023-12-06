@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="assets/img/favicon.png" sizes="16x16">
+    <title>Demo Website</title>
+    <style>
+        :root {
+            --colorPrimary: #623f1e;
+            --colorSecondary: #623f1e;
+            --colorBtn: #ffffff
+        }
+
+        #loader {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1040
+        }
+
+        .loader-text {
+            display: block;
+            text-align: center;
+            color: #d7d7d7;
+            font-family: Arial, sans-serif;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        .loading {
+            height: 0;
+            width: 0;
+            padding: 4vw;
+            border: .8vw solid #ccc;
+            border-right-color: #888;
+            border-radius: 6vw;
+            -webkit-animation: rotate 1s infinite linear
+        }
+
+        @keyframes loader {
+            0% {
+                filter: grayscale(0)
+            }
+            50% {
+                filter: grayscale(100%)
+            }
+            100% {
+                filter: grayscale(0)
+            }
+        }
+
+        .loader-logo {
+            width: 300px;
+            -webkit-animation: loader 1.3s infinite linear;
+            -moz-animation: loader 1.3s infinite linear;
+            -ms-animation: loader 1.3s infinite linear;
+            -o-animation: loader 1.3s infinite linear;
+            animation: loader 1.3s infinite linear
+        }
+
+        .pload {
+            display: none
+        }
+    </style>
+    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="preload" href="assets/js/app.js" as="script">
+    <link rel="preload" href="assets/fonts/roboto-bold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/roboto-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/muli-variablefont_wght-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/micon.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="dns-prefetch" href="http://google-analytics.com/" crossorigin>
+    <link rel="dns-prefetch" href="http://googletagmanager.com/" crossorigin>
+    <link rel="dns-prefetch" href="http://www.googleadservices.com/" crossorigin>
+    <link rel="dns-prefetch" href="http://googleads.g.doubleclick.net/" crossorigin>
+    <link rel="dns-prefetch" href="http://zopim.com/" crossorigin>
+    <link rel="dns-prefetch" href="http://ipinfo.io/" crossorigin>
+    <link rel="dns-prefetch" href="http://cdn.jsdelivr.net/" crossorigin>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="assets/js/app.js" defer></script>
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11394431812"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-11394431812');
+    </script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#navbarNav">
+    <div id="loader">
+        <span class="loader-text"><img src="assets/img/logo.png" class="loader-logo"></span></div>
+    <style>
+        @media only screen and (min-width: 992px) {
+            .info-box {
+                width: 27vw;
+                top: 8px;
+                left: 10px;
+                background-color: #fff;
+                color: #000;
+                text-align: center;
+                border-radius: 8px;
+                padding: 0 10px;
+                font-weight: 400;
+            }
+            .pro-status {
+                display: block;
+                text-shadow: none;
+                color: var(--colorPrimary);
+                background-color: transparent;
+                padding: .6vw 2.5vw .3vw 2vw;
+                font-weight: 700;
+            }
+            .pro-title,
+            .pro-add,
+            .pro-dev,
+            ul.pro-spec,
+            .info-box span.heading,
+            .pro-tag-line,
+            .pro-price,
+            .pro-rera {
+                text-shadow: none;
+                color: #000;
+                font-weight: 400;
+            }
+            .pro-title {
+                padding: .5vw .8vw .3vw;
+            }
+            .pro-title,
+            .pro-add,
+            .pro-price {
+                font-weight: 700;
+            }
+            ul.pro-spec {
+                background-color: transparent;
+                margin-bottom: 0;
+            }
+            .info-box span.list-icon {
+                display: none;
+            }
+            .pro-rera {
+                font-size: .8vw;
+            }
+        }
+
+        .offer {
+            display: block;
+            padding: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .offer-top {
+            background: #76BC4E;
+            border-radius: 8px 8px 0px 0px;
+        }
+
+        .offer-bottom {
+            background: #d1e9fc;
+            border-radius: 0px 0px 8px 8px;
+        }
+
+        .offer-bg-animation {
+            color: #ffffff;
+            display: block;
+            background: linear-gradient(-45deg, #623f1e, #623f1e, #623f1e, #623f1e);
+            background-size: 400% 400%;
+            -webkit-animation: Gradient 3s ease infinite;
+            -moz-animation: Gradient 3s ease infinite;
+            animation: Gradient 3s ease infinite;
+        }
+    </style>
+
+    <header class="micro-nav fixed-top pload">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white micro-navbar">
+            <a class="navbar-brand" href="#" onclick="return false"><img src="assets/img/logo.png" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+</button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-fill">
+                    <li class="nav-item"><a class="nav-link" href="#home"><i class="fa-solid fa-house"></i><span class="d-sm-inline d-md-none"> Home</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing"><i class="fa-solid fa-indian-rupee-sign"></i> Price</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sitefloorplan"><i class="fa-solid fa-building"></i> Site &amp; Floor Plan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#amenities"><i class="fa-solid fa-wifi"></i> Amenities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery"><i class="fa-regular fa-images"></i> Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#location"><i class="fa-solid fa-location-dot"></i> Location</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sitevisit"><i class="fa-brands fa-youtube"></i> Virtual Site Tour</a></li>
+                    <li class="nav-item overflow-hidden"><a class="nav-link enqModal" href="#" data-form="md" data-title="Download brochure" data-btn="Download now" data-enquiry="Ebook Download" data-redirect="brochure" data-redirect-file="brochure.pdf" data-toggle="modal" data-target="#enqModal"><i class="fa-solid fa-download d-inline-block animated slideInDown infinite"></i> Brochure</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="pload">
+        <div id="home" class="carousel slide micro-main-slider" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#home" data-slide-to="0" class="active"></li>
+                <li data-target="#home" data-slide-to="1"></li>
+                <!-- <li data-target="#home" data-slide-to="2"></li> -->
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <picture>
+                        <source class="lazyload d-block micro-main-slider-img" media="(max-width: 750px)" data-srcset="assets/img/banner1.jpg" type="image/webp">
+                        <source class="lazyload d-block micro-main-slider-img" media="(min-width: 751px)" data-srcset="assets/img/banner1.jpg" type="image/webp">
+                        <img data-sizes="auto" class="lazyload d-block micro-main-slider-img" data-srcset="assets/img/banner1.jpg 750w,assets/img/banner1.jpg">
+                    </picture>
+                </div>
+                <div class="carousel-item">
+                    <picture>
+                        <source class="lazyload d-block micro-main-slider-img" media="(max-width: 750px)" data-srcset="assets/img/banner2.jpg" type="image/webp">
+                        <source class="lazyload d-block micro-main-slider-img" media="(min-width: 751px)" data-srcset="assets/img/banner2.jpg" type="image/webp">
+                        <img data-sizes="auto" class="lazyload d-block micro-main-slider-img" data-srcset="assets/img/banner2.jpg 750w,assets/img/banner2.jpg">
+                    </picture>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="info-box overflow-hidden">
+            <span class="pro-status">NEW LAUNCH</span>
+            <span class="pro-title">Akhand Yashwant Smart City </span>
+            <span class="pro-add">At Vasai East</span>
+            <span class="pro-dev">by Akhand Developers</span>
+            <br>
+            <!-- <ul class="pro-spec">
+		<li><span class="list-icon">&rtrif;</span>
+		<span class="heading">Avail Best Offer & Discounts</span></li>
+	<li><span class="list-icon">&rtrif;</span>
+		<span class="heading">Typology : 2, 3 BHK</li>
+	<li><span class="list-icon">&rtrif;</span>
+		<span class="heading"> World-Class Lifestyle</li>
+</ul> -->
+
+            <div class="offer offer-top offer-bg-animation text-white overflow-hidden mt-1 text-uppercase mx-1 mx-md-0">
+                <span class="animated bounceIn infinite d-block" style="animation-duration: 3s;">  100+ Acres Township
+		</span>
+            </div>
+            <span class="offer offer-top offer-bg-animation text-white overflow-hidden mt-1 text-uppercase mx-1 mx-md-0"> 45+ Lifestyle Amenities </span>
+
+            <div class="offer offer-top offer-bg-animation text-white overflow-hidden mt-1 text-uppercase mx-1 mx-md-0">
+                <span class="animated bounceIn infinite d-block" style="animation-duration: 3s;">  Flexible Payment Plan  </span>
+            </div>
+
+
+            <span class="offer offer-top offer-bg-animation text-white overflow-hidden mt-1 text-uppercase mx-1 mx-md-0"> Launch Benefits | Special Discount  </span>
+
+            <div class="offer offer-top offer-bg-animation text-white overflow-hidden mt-1 text-uppercase mx-1 mx-md-0">
+                <span class="animated bounceIn infinite d-block" style="animation-duration: 3s;"> Avail Best Offers & Discounts*    </span>
+            </div>
+
+
+            <!-- <div class="offer offer-top offer-bg-animation text-white overflow-hidden mt-1 text-uppercase mx-1 mx-md-0">
+	<span class="animated bounceIn infinite d-block" style="animation-duration: 3s;"> Under Construction – 0 Floor rise | 5% Effective GST
+ </span></div> -->
+
+            <!-- <div class="offer offer-bottom overflow-hidden mb-1 mx-1 mx-md-0">
+		<span class="animated bounceIn infinite d-block" style="animation-duration: 3s;"> Book by Paying 25% Only
+	</span>
+</div> --><br>
+            <span class="pro-tag-line"> Exclusive 1 & 2 Bed Apartments </span>
+            <span class="pro-price"> Starts From ₹ 41.99 Lacs*</span><br>
+            <button class="btn btn-info micro-form-btn enqModal effetMoveGradient effectScale" data-form="lg" data-title="Mail me pricing details" data-btn="Send now" data-enquiry="Enquire Now" data-redirect="enquiry" data-toggle="modal" data-target="#enqModal">Enquire Now</button>
+            <span class="pro-rera"><span class="heading">Rera Regd. No.</span> : Coming Soon
+            </span>
+        </div>
+        <div class="mob-form d-sm-block d-md-none d-lg-none">
+            <span class="d-block form-heading font-weight-bold">Pre-Register here for Best Offers</span>
+            <form action="email.php" onsubmit="enq_formBtn.disabled = true; return true;" method="POST" class="form-side">
+                <input type="hidden" name="lead_form_name" value="Pre-Register Mobile Form">
+                <div class="form-group">
+                    <input type="text" name="name" pattern="[a-zA-Z ]+" class="form-control rounded-0 micro-form-field" required placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="fullMobileNo" value="">
+                    <input type="tel" id="intTelInput-mob" pattern="[0-9]+" name="mobile" class="intTelInput form-control rounded-0 micro-form-field" required placeholder="Mobile No">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control rounded-0 micro-form-field" required placeholder="E-Mail Address">
+                </div>
+                <button type="submit" name="enq_formBtn" class="btn btn-info micro-form-btn effetMoveGradient" onclick="setCookie('redirectCookie', 'enquire');">Pre-Register Now</button>
+            </form>
+        </div>
+        <section class="section shadow-sm lazyload" id="overview">
+            <span class="head text-capitalize d-none d-md-block">Overview</span>
+            <span class="d-block section-heading color-primary text-capitalize">Akhand Vasai E - Yashwant Smart City </span>
+            <span class="d-block section-heading-sub color-primary text-capitalize">At Vasai East</span>
+            <p>At Akhand Vasai E - Yashwant Smart City, we strive to create unique lifestyle developments designed to international standards. The goal is to create a legacy by maintaining the family values for years ahead, along with focusing on a sensible
+                life for the present. Vasai is one of the most coveted neighbourhoods in the Mumbai Metropolitan Region. Yashwant Smart City has a significant location benefit due to its proximity to Vasai Road Station and Mumbai-Ahmedabad Highway. Yashwant
+                Smart City promises to be the greatest Gateway to Mumbai for all residents.</p>
+            <p>Along with world-class modern conveniences, focusing on health-wellness through organic harvest, spending quality time with loved ones, stepping into a lush green park, trailing up a little hillock, breathing fresh air, and experiencing natural
+                light are some actual smart living practices.</p>
+
+            <button class="btn btn-sm btn-outline-info sectio-bro-btn overflow-hidden enqModal" data-form="md" data-title="Download brochure" data-btn="Download now" data-enquiry="Ebook Download" data-redirect="brochure" data-redirect-file="brochure.pdf" data-toggle="modal"
+                data-target="#enqModal"><span class="d-inline-block fa-solid fa-download mr-1 animated slideInDown infinite"></span> Download Brochure</button>
+
+            <hr>
+
+
+            <h3 class="blink-soft" style="text-align: center; color: #623f1e;">Project Highlights</h3>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="list-group rk-list">
+                        <li class="list-group-item">✓ Exclusive 1 Bed & 2 Bed Apartments </li>
+                        <li class="list-group-item">✓ Integrated Township</li>
+                        <li class="list-group-item">✓ Prudent Investment</li>
+                        <li class="list-group-item">✓ Quality Construction</li>
+
+
+
+
+                        <li class="list-group-item">✓ 9’5” Height Ceiling to Floor</li>
+
+
+                        <li class="list-group-item">✓ 45+ Lifestyle Amenities </li>
+
+                        <li class="list-group-item">✓ 10 mins away from Railway Station </li>
+                        <li class="list-group-item">✓ 1st in Vasai's 4ft Deck Area </li>
+                        <li class="list-group-item">✓ Instead of Sky use Elevated Jogging Track on Podium </li>
+                        <li class="list-group-item">✓ Excellent connectivity </li>
+                        <li class="list-group-item">✓ Ganesh Temple in Complex </li>
+                        <li class="list-group-item">✓ 2 Swimming Pool for Kids & Adults </li>
+                        <li class="list-group-item">✓ Mini Theatre (25 Seater) </li>
+                        <li class="list-group-item">✓ Prime Location </li>
+                    </ul>
+                </div>
+            </div><br><br>
+
+            <h3 style="text-align: center; color: #623f1e;">Project Video</h3><br>
+            <video width="100%" height="330" controls>
+  <source src="assets/img/demo.mp4" type="video/mp4">
+
+  
+</video>
+        </section>
+        <section class="section shadow-sm lazyload">
+            <span class="section-link" id="pricing"></span>
+            <span class="head text-capitalize">Price</span>
+            <div class="row">
+                <div class="col-md-8">
+                    <table class="table table-striped table-borderless border micro-price-table table-pricing">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="border border-bottom-0 mb-w">Type</th>
+                                <th scope="col" class="border border-bottom-0 mb-w">Carpet Area</th>
+                                <th scope="col" class="border border-bottom-0 border-right-0">Price</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                            <tr>
+                                <td class="border border-left-0 border-top-0 border-bottom-0 price-type">1 BHK </td>
+                                <td class="border border-left-0 border-top-0 border-bottom-0 price-carpet">456 - 527 Sq. Ft. <small class="d-inline-block d-md-none">(Carpet Area)</small></td>
+                                <td class="price-amt"><i class="fa-solid fa-indian-rupee-sign"></i> 41.99 Lacs*</td>
+                                <td><button class="btn btn-sm btn-info effetGradient effectScale enqModal" data-form="lg" data-title="Send me costing details" data-btn="Send now" data-enquiry="Request Price" data-redirect="enquiry" data-toggle="modal" data-target="#enqModal">Click Here</button></td>
+                            </tr>
+
+                            <tr>
+                                <td class="border border-left-0 border-top-0 border-bottom-0 price-type">2 BHK </td>
+                                <td class="border border-left-0 border-top-0 border-bottom-0 price-carpet">699 Sq. Ft. <small class="d-inline-block d-md-none">(Carpet Area)</small></td>
+                                <td class="price-amt"><i class="fa-solid fa-indian-rupee-sign"></i> 64.44 Lacs*</td>
+                                <td><button class="btn btn-sm btn-info effetGradient effectScale enqModal" data-form="lg" data-title="Send me costing details" data-btn="Send now" data-enquiry="Request Price" data-redirect="enquiry" data-toggle="modal" data-target="#enqModal">Click Here</button></td>
+                            </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <a href="#" class="text-decoration-none enqModal" data-form="lg" data-title="Send me costing details" data-btn="Send now" data-enquiry="Costing Details" data-toggle="modal" data-target="#enqModal">
+                        <div class="at-property-item shadow-sm border border-grey mt-1">
+                            <div class="at-property-img">
+                                <picture>
+                                    <source class="lazyload w-100" data-srcset="assets/img/costing-details.jpg" type="image/webp">
+                                    <img data-sizes="auto" class="lazyload w-100" data-srcset="assets/img/costing-details.jpg">
+                                </picture>
+                                <div class="at-property-overlayer"></div>
+                                <span class="btn btn-default at-property-btn">Enquire Now</span>
+                            </div>
+                            <div class="at-property-dis effetGradient">
+                                <h5>Complete Costing Details</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="section shadow-sm lazyload" data-script="assets/plugins/fancybox/jquery.fancybox.min.js" data-link="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+            <span class="section-link" id="sitefloorplan"></span>
+            <span class="head text-capitalize">Site &amp; Floor Plan</span>
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="d-block section-heading-sub text-capitalize">Master Plan</span>
+                    <a href="#" class="text-decoration-none enqModal" data-form="lg" data-title="Send me plan details" data-btn="Send now" data-enquiry="Floor Plan" data-redirect="enquiry" data-toggle="modal" data-target="#enqModal">
+
+                        <div class="at-property-item mt-1">
+                            <div class="at-property-img master-plan text-center">
+                                <picture>
+                                    <source class="lazyload shadow-sm border border-grey blur" data-srcset="assets/img/layout.jpg" type="image/webp">
+                                    <img data-sizes="auto" class="lazyload shadow-sm border border-grey blur" data-srcset="assets/img/layout.jpg" width="320" height="154">
+                                </picture>
+                                <div class="at-property-overlayer"></div>
+                                <span class="at-property-btn">View Master Plan</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-8">
+                    <span class="d-block section-heading-sub text-capitalize ">Floor Plan</span>
+                    <div class="row row-cols-1 row-cols-md-2">
+
+
+                        <div class="col">
+                            <a href="#" class="text-decoration-none enqModal" data-form="lg" data-title="Send me plan details" data-btn="Send now" data-enquiry="Floor Plan" data-redirect="enquiry" data-toggle="modal" data-target="#enqModal">
+                                <div class="at-property-item shadow-sm border border-grey mt-1">
+                                    <div class="at-property-img">
+                                        <picture>
+                                            <source class="lazyload floor-plan-img blur" data-srcset="assets/img/1bhk.jpg" type="image/webp">
+                                            <img data-sizes="auto" class="lazyload floor-plan-img blur" data-srcset="assets/img/1bhk.jpg">
+                                        </picture>
+                                        <div class="at-property-overlayer"></div>
+                                        <span class="btn btn-default at-property-btn" role="button">Enquire Now</span>
+                                    </div>
+                                    <div class="at-property-dis effetGradient">
+                                        <h5>1 BHK</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col">
+                            <a href="#" class="text-decoration-none enqModal" data-form="lg" data-title="Send me plan details" data-btn="Send now" data-enquiry="Floor Plan" data-redirect="enquiry" data-toggle="modal" data-target="#enqModal">
+                                <div class="at-property-item shadow-sm border border-grey mt-1">
+                                    <div class="at-property-img">
+                                        <picture>
+                                            <source class="lazyload floor-plan-img blur" data-srcset="assets/img/2bhk.jpg" type="image/webp">
+                                            <img data-sizes="auto" class="lazyload floor-plan-img blur" data-srcset="assets/img/2bhk.jpg">
+                                        </picture>
+                                        <div class="at-property-overlayer"></div>
+                                        <span class="btn btn-default at-property-btn" role="button">Enquire Now</span>
+                                    </div>
+                                    <div class="at-property-dis effetGradient">
+                                        <h5>2 BHK</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section shadow-sm lazyload">
+            <span class="section-link" id="amenities"></span>
+            <span class="head text-capitalize">Amenities</span>
+            <div id="ami-3" class="ami-3 owl-carousel owl-theme">
+                <div class="item-wrp">
+                    <div>
+
+                        <p>Elevated Jogging Track </p>
+                    </div>
+                    <div>
+
+                        <p> Deck Area</p>
+                    </div>
+                    <div>
+
+                        <p> turf parks</p>
+                    </div>
+
+
+                </div>
+                <div class="item-wrp">
+                    <div>
+
+                        <p> Swimming Pool</p>
+                    </div>
+                    <div>
+
+                        <p> Kids Pool</p>
+                    </div>
+                    <div>
+
+                        <p> Ganesh Temple</p>
+                    </div>
+
+
+                </div>
+
+
+                <div class="item-wrp">
+                    <div>
+
+                        <p> Mini Theatre</p>
+                    </div>
+                    <div>
+
+                        <p> fitness centre</p>
+                    </div>
+
+                    <div>
+
+                        <p> indoor game areas </p>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </section>
+        <section class="section shadow-sm lazyload">
+            <span class="section-link" id="gallery"></span>
+            <span class="head text-capitalize">Gallery</span>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+                    <a data-fancybox="gallery-0" href="assets/img/img_1.jpg">
+		<img data-src="assets/img/img_1.jpg" class="lazyload gallery-thumb" style="object-fit: cover;">
+</a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+                    <a data-fancybox="gallery-0" href="assets/img/img2.jpg">
+		<img data-src="assets/img/img2.jpg" class="lazyload gallery-thumb" style="object-fit: cover;">
+</a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+                    <a data-fancybox="gallery-0" href="assets/img/img 3.jpg">
+		<img data-src="assets/img/img 3.jpg" class="lazyload gallery-thumb" style="object-fit: cover;">
+</a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+                    <a data-fancybox="gallery-0" href="assets/img/img 4.jpg">
+		<img data-src="assets/img/img 4.jpg" class="lazyload gallery-thumb" style="object-fit: cover;">
+</a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+                    <a data-fancybox="gallery-0" href="assets/img/img 5.jpg">
+		<img data-src="assets/img/img 5.jpg" class="lazyload gallery-thumb" style="object-fit: cover;">
+</a>
+                </div>
+
+                </div>
+
+
+            </div>
+        </section>
+        <section class="section shadow-sm lazyload" data-script="assets/plugins/fancybox/jquery.fancybox.min.js" data-link="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+            <span class="section-link" id="location"></span>
+            <span class="head text-capitalize">Location</span>
+            <div class="row mb-3">
+                <div class=" col-sm-12">
+                    <span class="d-block section-heading-sub text-capitalize">Map View</span>
+
+                    <iframe class="lazyload lmap mb-2" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3763.41370772747!2d72.843167!3d19.394523!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7af5eba5c0a49%3A0xc9218175bbe48!2sYashwant%20Smart%20City!5e0!3m2!1sen!2sin!4v1693032258431!5m2!1sen!2sin"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                <div class="col my-2"><i class="fa-solid fa-map-location-dot"></i> Vasai Railway Station - 10 Min</div>
+                <div class="col my-2"><i class="fa-solid fa-map-location-dot"></i> Mumbai - Ahmedabad Highway - 10 Min</div>
+                <div class="col my-2"><i class="fa-solid fa-map-location-dot"></i> Box Street Vasai - 0 Min</div>
+                <div class="col my-2"><i class="fa-solid fa-map-location-dot"></i> iGlobal School (I.C.S.E) - 0 Min</div>
+                <div class="col my-2"><i class="fa-solid fa-map-location-dot"></i> Thakur School & College (Upcoming) - 1 Min</div>
+                <div class="col my-2"><i class="fa-solid fa-map-location-dot"></i> Multi-speciatily hospital - 2 Min</div>
+                <div class="col my-2"><i class="fa-solid fa-map-location-dot"></i> Vartak College (Arts, Science, Commerce, Polytechnic) - 8 Min</div>
+
+
+
+
+
+
+
+            </div>
+
+
+        </section>
+        <section class="section shadow-sm lazyload">
+            <span class="section-link" id="sitevisit"></span>
+            <span class="head text-capitalize">Virtual Site Tour</span>
+            <a href="#" class="enqModal" data-form="lg" data-title="Virtual Site Visit" data-btn="Start Tour" data-enquiry="Virtual Site Tour" data-redirect="virtualtour" data-toggle="modal" data-target="#enqModal">
+                <div class="at-property-item my-2 pt-md-0">
+                    <div class="at-property-img vsv-img">
+                        <picture>
+                            <source class="lazyload w-100" media="(max-width: 750px)" data-srcset="assets/img/banner3.jpg" type="image/webp">
+                            <source class="lazyload w-100" media="(min-width: 751px)" data-srcset="assets/img/banner3.jpg" type="image/webp">
+                            <img data-sizes="auto" class="lazyload w-100" data-srcset="assets/img/banner3.jpg 750w,assets/img/banner3.jpg">
+                        </picture>
+                        <div class="vsv-text-bk">
+                            <div class="vsv-text-bg">
+                                <div class="vsv-icon lazyload"></div>
+                                <span class="text-uppercase h1 font-weight-bold mb-0 d-none d-lg-block">Virtual Tour</span>
+                                <span class="text-capitalize text-center d-none d-lg-block">Yashwant Smart City At Vasai East</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="d-block text-capitalize text-center d-sm-block d-md-none pt-2">Yashwant Smart City At Vasai East</span>
+                </div>
+            </a>
+        </section>
+        <section class="section shadow-sm lazyload" id="developer">
+            <div class="d-block pt-2 pb-1 text-center">
+                <img src="assets/img/logo.png" style="max-width: 100%;height: 70px; display: inline-block;">
+            </div>
+            <span class="d-block section-heading-sub text-capitalize">About Akhand Developers </span>
+            <p> Akhand Developers is one of the most trustworthy real estate developers in Mumbai. It has successfully delivered many prestigious residential projects with the highest standards of quality and has earned an enviable reputation in a brief period
+                of time. The Group is driven by the vision to become the most preferred real estate developer through consistent delivery of the committed quality through its values and services.
+
+            </p>
+
+
+
+
+        </section>
+        <div class="micro-side text-center">
+            <div class="og-section pb-2">
+                <ul class="nav nav-fill og-block">
+                    <li class="nav-item enqModal" data-form="lg" data-title="Organize Site Visit" data-btn="Request Site Visit" data-enquiry="Organize Site Visit" data-toggle="modal" data-target="#enqModal">Organize Site Visit</li>
+                    <li class="nav-item" onclick="window.open('https://api.whatsapp.com/send?phone=+918104049597&text=I want More Information About Yashwant Smart City Project.', '_blank');"><span class="fa-brands fa-whatsapp"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> +91 8104049597</li>
+                </ul>
+                <button class="btn btn-sm btn-info micro-form-btn-sm effetGradient effectScale enqModal mt-1" data-form="sm" data-title="Immediate Call Back" data-btn="Request Call Now" data-enquiry="Immediate Call Back" data-toggle="modal" data-target="#enqModal"><span class="fa-solid fa-phone-volume"></span> Request Call Back</button>
+            </div>
+            <span class="d-block form-heading font-weight-bold my-2">Pre-Register here for Best Offers</span>
+            <form action="email.php" onsubmit="enq_formBtn.disabled = true; return true;" method="POST" class="form-side">
+                <input type="hidden" name="lead_form_name" value="Pre-Register Form">
+                <div class="form-group">
+                    <input type="text" name="name" pattern="[a-zA-Z ]+" class="form-control rounded-0 micro-form-field" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="fullMobileNo" value="">
+                    <input type="tel" id="intTelInput-side" pattern="[0-9]+" name="mobile" class="intTelInput form-control rounded-0 micro-form-field w-100" placeholder="Mobile No" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control rounded-0 micro-form-field" placeholder="E-Mail Address" required>
+                </div>
+                <button type="submit" name="enq_formBtn" class="btn btn-info micro-form-btn mt-2 effetMoveGradient" onclick="setCookie('redirectCookie', 'enquire');">Pre-Register Now</button>
+            </form>
+        </div>
+        <ul class="mob-action nav nav-fill d-sm-block d-lg-none">
+            <li class="nav-item" onclick="javascript:location.href='tel:+918104049597'"><span class="mi mi-call action-icon"></span> Call</li>
+            <li class="nav-item enqModal" data-form="lg" data-title="Mail me pricing details" data-btn="Send now" data-enquiry="Enquire Now" data-redirect="enquiry" data-toggle="modal" data-target="#enqModal"><span class="mi mi-enquire action-icon"></span> Enquire</li>
+            <li class="nav-item" onclick="window.open('https://api.whatsapp.com/send?phone=+918104049597&text=I want More Information About Yashwant Smart City Project.', '_blank');"><span class="mi mi-whatsapp action-icon"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span> WhatsApp</li>
+        </ul>
+        <div class="modal fade" id="enqModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered enq-modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+</button>
+                        <div class="modal-head d-none"><span class="modal-title">Title</span></div>
+                        <div class="d-flex">
+                            <div class="flex-fill align-self-center flex-shrink-1 modal-highlight-bg d-none d-lg-block">
+                                <span class="modal-highlight-title">We Promise</span>
+                                <ul class="modal-highlight">
+                                    <li><img src="assets/img/customer-service (2).png"><span>Instant Call Back</span></li>
+                                    <li><img src="assets/img/car-insurance.png"></i><span>Free Site Visit</span></li>
+                                    <li><img src="assets/img/rupee.png"><span>Unmatched Price</span></li>
+                                </ul>
+                            </div>
+                            <div class="flex-fill align-self-center">
+                                <img src="assets/img/logo.png" class="modal-logo">
+                                <span class="modal-title-secondary">Register here and Avail the
+		<span class="text-danger">Best Offers!!</span></span>
+                                <form action="email.php" onsubmit="enq_formBtn.disabled = true; return true;" method="POST" class="form-modal">
+                                    <input type="hidden" id="lead_form_name" name="lead_form_name" value="">
+                                    <div class="form-group">
+                                        <input type="text" name="name" pattern="[a-zA-Z ]+" class="form-control rounded-0 micro-form-field" required placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="fullMobileNo" value="">
+                                        <input type="tel" id="intTelInput-popup" pattern="[0-9]+" name="mobile" class="intTelInput form-control rounded-0 micro-form-field" required placeholder="Mobile No">
+                                    </div>
+                                    <div class="form-group form-md">
+                                        <input type="email" name="email" class="form-control rounded-0 micro-form-field" required placeholder="E-Mail Address">
+                                    </div>
+
+                                    <input type="hidden" id="enquireName" value="Enquire Now">
+                                    <button type="submit" name="enq_formBtn" class="btn btn-info micro-form-btn effetGradient effectScale">Get Instant Call Back</button>
+                                </form>
+                            </div>
+                        </div>
+                        <a href="tel:+918104049597" class="modal-call-btn"><i class="mi mi-call"></i> +91 8104049597</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="disclaimer pload">
+        <p class="card-text" style="text-align:center;">
+            <a title="Invoice" target="_blank" href="assets/img/CP_FINAL.docx" download="Privacy policy and Terms and Conditions" style="font-size: 20px;">Privacy policy and Terms and Conditions</a>
+        </p>
+        <b>Disclaimer :</b> The content is for information purposes only and does not constitute an offer to avail of any service. Prices mentioned are subject to change without notice and properties mentioned are subject to availability. Images for representation
+        purposes only. This is the official website of authorized marketing partner. We may share data with RERA registered brokers/companies for further processing. We may also send updates to the mobile number/email id registered with us. All Rights
+        Reserved.
+
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.getElementById("loader").remove();
+            document.querySelector('header').classList.remove('pload');
+            document.querySelector('main').classList.remove('pload');
+            document.querySelector('footer').classList.remove('pload')
+        });
+        var sitePrimaryColor = '#623f1e';
+    </script>
+</body>
+
+</html>
